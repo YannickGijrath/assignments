@@ -2,6 +2,8 @@
 title: "Graded assignment1"
 author: "Yannick Gijrath, 2001202"
 output: html_notebook
+editor_options: 
+  chunk_output_type: console
 ---
 
 # Packages
