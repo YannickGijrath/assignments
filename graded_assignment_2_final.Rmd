@@ -1,0 +1,85 @@
+---
+title: "Graded assignment 2"
+author: "Yannick Gijrath, 2001202"
+output: html_notebook
+---
+
+# Assignment 1
+
+First load the `tidyverse` package:
+
+```{r}
+library(tidyverse)
+```
+
+
+##  Assignment 1a
+
+Read the data file _graded_assignment_2.csv_ from disk:
+
+```{r}
+data1 <- read.csv2("graded_assignment_2.csv")
+head(data1)
+```
+
+## Assignment 1b
+
+Add column _Health_status_ with containing values _1_ (Healthy) and _0_ (Unhealthy).
+A person is Healthy, when `FKG` equals 0 and `DKG` equals 0.
+
+So
+
+| FKG | DKG | Health_status   |
+|-----|-----|--------------   |
+| 0   | 0   | 1               |
+| 1   | 0   | 0               |
+| 0   | 1   | 0               |
+| 1   | 1   | 0               |
+
+Hint: you can use `ifelse()`:
+
+```{r, echo=FALSE}
+data2 <- data1 %>%
+  mutate(Health_status = ifelse(FKG + DKG == 0, 1, 0))
+head(data2)
+  
+```
+
+In the next datacamp course you will learn more about the package `dplyr`. For now we just give you some code. You can run the following script.
+
+First, we want to make _Health\_status_ a factor instead of a character
+
+```{r}
+data2 <- data2 %>%
+  mutate(Health_status = as.numeric(Health_status))
+str(data2)
+```
+
+Then, we want to count the number of healthy and unhealthy males and females
+
+```{r}
+data3 <- data2 %>%
+  group_by(Gender, Health_status) %>%
+ summarise(Count_observations = n()) %>%
+  mutate(Health_status=as.factor(Health_status))
+
+data3
+```
+
+## Assignment 2
+
+Recreate with the dataframe "data3" the following barchart ![](../Sourcedata/barchart.png)
+
+* Hint: see for changing the [legends and colors](http://www.cookbook-r.com/Graphs/Legends_(ggplot2)/)
+* Hint: the "green" color is in fact the color "greenyellow"
+* Hint: see for the [themes](http://ggplot2.tidyverse.org/reference/ggtheme.html): 
+
+
+```{r}
+ggplot(data3,aes(x = Gender, y=Count_observations, fill=Health_status)) + geom_bar(position = "dodge", stat = "identity") + scale_fill_manual(values=c("black", "red"))
+
+
+
+```
+
+
