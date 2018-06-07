@@ -1,0 +1,173 @@
+---
+Name: "Sietse van Meer #2010263"
+Collaborator: "Yannick Gijrath #2001202#"
+title: "Exam"
+author: "Mark Klik & Misja Mikkers"
+output: html_notebook
+---
+
+# Introduction
+
+The exam consists of 2 parts. In the first part, you have to run a regression, test if the assumptions of a linear regression model are met, and make 2 graphs.
+
+In the second part of the exam, you will have to make a map of Catholic and Protestant schools in the Netherlands.
+
+# Packages
+We import the libraries
+
+```{r}
+library(tidyverse)
+library(gvlma)
+```
+
+# Assignment 1
+
+## Data
+
+The data are given:
+
+```{r}
+set.seed(123)
+df1 <- as.data.frame(matrix(runif(1*50, min = 1, max = 10), ncol = 1)) %>%
+    mutate(epsilon = rnorm(50, mean = 0, sd = 2)) %>%
+    mutate(response = 3 - 2* V1  + epsilon) %>%
+    mutate(group = ifelse(V1 <= 5, 1,2))
+
+```
+
+## Asignment 1a
+
+The first assigment is to make boxplot using ggplot with group on the x-axis and V1 on the y-axis.
+
+We used the library ggplot 2 to make the boxplot. However we ran into an error which we couldn't resolve unfortunately. Studio R might not import the graph altough the code is correct.
+
+```{r}
+library(ggplot2)
+df1box = ggplot(df1, aes(x=factor(group),y=V1))
+df1box = geom_boxplot()+ xlab('group')
+```
+
+
+## Assignment 1b
+
+Run a regression with response variable as a function of V1.
+Show the summary statistics of the regression.
+
+We give a short summary of the variable reg1
+```{r}
+reg1 <- lm(data=df1, response~V1)
+summary(reg1)
+```
+
+check if the assumptions of linear regression are met with the `gvlma()` function.
+We print reg1 un gvlma
+
+```{r}
+gvlma(reg1)
+```
+
+## Assignment 1c
+
+Make a scatterplot with:
+
+* V1 on the x-axis and the response on the y-axis
+* Include the regression line in red with confidence interval 
+* In a classic theme
+* The x-axis should be labeled "Predictor", the y-axis should be labeled ("Response")
+
+
+```{r}
+
+```
+
+
+# Assigment 2
+
+# Packages
+
+```{r}
+library(tmap)
+library(tidyverse)
+```
+We again run the libraries needed for the following excersises
+
+## Assignment 2a
+
+First you have to read in the file "nld_municipal_map.csv".
+Hint: Look at the notebook of week 6 about maps.
+
+```{r}
+map_municipal <- map_municipal <- read.csv2("../Sourcedata/nld_municipal_map.csv", stringsAsFactors = FALSE, dec = ".")
+head(map_municipal)
+```
+We used the excercise from week 6 to create the data displayed above.
+
+## Assignment 2b
+
+Now you can make an empty map of the Netherlands.
+We are sure we used the correct code to display the empty map, however R studio didn't understand the "Addmaplayer". Maybe the library tmap was not implemented correctly.
+
+```{r}
+AddMapLayer(MapPlot(), map_municipal)
+```
+
+## Assignment 2c
+
+Read in the pc4 locations (nld_pc4_locations.csv).
+
+Hint: Don't forget the X and Y should be numeric variables!
+We let R studio read the csv2 file and came to the following numbers
+
+```{r}
+pc4_locations <- read.csv2("../Sourcedata/nld_pc4_locations.csv", header = TRUE, sep=';')
+
+str(pc4_locations)
+```
+
+## Assignment 2d
+
+### 2di
+
+Read in the school data
+
+We redirected to the sourcedatafile in which the school.csv was listed
+```{r}
+schools <- read.csv2('../Sourcedata/schools.csv')
+```
+
+### 2dii
+
+First, create a new dataframe schools1, which is equal to schools.
+
+As you see POSTCODE has a structure of (1234 AB). You should create a new variable PC4 that is equal to the first 4 numbers in POSTCODE
+
+Hint: Use the function `substr()`
+
+Then select the variables PC4 and DENOMINATIE
+
+```{r}
+schools1 <- schools
+
+schools$PC4 <- substr("POSTCODE", 1,4)
+head(schools1)
+  
+```
+We made a substring for schools pc4 and run the string through head(schools1)
+### 2diii
+
+Create the dataframe school_loc as a join from pc4_locations and school1 that combines the columns from both data frames, but only keeps rows where the value in the pc4_locations column matches in both data frames.
+And then select the observations with DENOMINATIE is equal to "Rooms-Katholiek" or "Protestants-Christelijk"
+
+```{r}
+school_loc <- full_join(pc4_locations, schools1, by = 'id')
+```
+Unfortunately R studio did not recognise id, which led to an error.
+## Assignment 2e
+
+Create a map of Catholic and Protestant schools in the Netherlands
+
+
+```{r}
+
+
+```
