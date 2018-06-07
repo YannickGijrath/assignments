@@ -7,3 +7,5 @@ Assignment week 6 link: https://github.com/YannickGijrath/assignments/blob/maste
 (Code is there but not processing in the kernel for some reason)
 
 Assignment week 7 link: https://github.com/YannickGijrath/assignments/blob/master/graded_assignment_2_final.Rmd
+
+Exam June 7, 2018: https://github.com/YannickGijrath/assignments/blob/master/exam_june_7_2018.ipynb
