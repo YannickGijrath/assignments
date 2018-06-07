@@ -12,4 +12,5 @@ Python Exam June 7, 2018: https://github.com/YannickGijrath/assignments/blob/mas
 
 R Exam June 7,2018: https://github.com/YannickGijrath/assignments/blob/master/R%20final <--- Text file
 https://github.com/YannickGijrath/assignments/blob/master/Exam_%20R.nb.html  <--- HTML file
-(Even after knitting only the code and not the outputs are displaying)
+https://github.com/YannickGijrath/assignments/blob/master/Exam_%20R.Rmd <--- Rmd file
+(Even after knitting only the code and not the outputs are displaying???)
