@@ -9,4 +9,7 @@ Assignment week 6 link: https://github.com/YannickGijrath/assignments/blob/maste
 Assignment week 7 link: https://github.com/YannickGijrath/assignments/blob/master/graded_assignment_2_final.Rmd
 
 Exam June 7, 2018: https://github.com/YannickGijrath/assignments/blob/master/exam_june_7_2018.ipynb
-https://github.com/YannickGijrath/assignments/blob/master/R%20final (Even after knitting only the code and not the outputs are displaying)
+
+R Exam June 7,2018 :https://github.com/YannickGijrath/assignments/blob/master/R%20final 
+https://github.com/YannickGijrath/assignments/blob/master/Exam_%20R.nb.html  <--- HTML file
+(Even after knitting only the code and not the outputs are displaying)
