@@ -10,6 +10,6 @@ Assignment week 7 link: https://github.com/YannickGijrath/assignments/blob/maste
 
 Exam June 7, 2018: https://github.com/YannickGijrath/assignments/blob/master/exam_june_7_2018.ipynb
 
-R Exam June 7,2018 :https://github.com/YannickGijrath/assignments/blob/master/R%20final 
+R Exam June 7,2018: https://github.com/YannickGijrath/assignments/blob/master/R%20final <--- Text file
 https://github.com/YannickGijrath/assignments/blob/master/Exam_%20R.nb.html  <--- HTML file
 (Even after knitting only the code and not the outputs are displaying)
